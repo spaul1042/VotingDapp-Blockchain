@@ -7,7 +7,7 @@ Install Ganache for setting up a local blockchain Network (Provides free 10 acco
     
 truffle unbox pet-shop box or git clone if unbox not working 
 
-2) To connect truffle backend project with Ganache network , change truffle-config.js file as for example:
+To connect truffle backend project with Ganache network , change truffle-config.js file as for example:
 
 To connect truffle frontend project (client side) with Ganache ,  localhost:7545 is the same server where local blockchainnetwork is running
 
