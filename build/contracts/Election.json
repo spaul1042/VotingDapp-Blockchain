@@ -2501,12 +2501,12 @@
     "5777": {
       "events": {},
       "links": {},
-      "address": "0xCd27d463203c97299A1c7C39FE3437EE22eCa3C5",
-      "transactionHash": "0xffc067789aa3e667a8752d54c8e5558025681a1afaa06f13b4bdbf97f0d86437"
+      "address": "0x23284DC2358575549ADa4EafE92C4429833F67cc",
+      "transactionHash": "0xc96409101203c092473252fff5b5374c53735f936bfd6f28b57a49aa00aaf428"
     }
   },
   "schemaVersion": "3.4.11",
-  "updatedAt": "2022-12-30T07:33:32.817Z",
+  "updatedAt": "2023-01-03T11:44:39.139Z",
   "networkType": "ethereum",
   "devdoc": {
     "methods": {}
