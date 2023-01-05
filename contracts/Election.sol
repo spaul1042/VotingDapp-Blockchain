@@ -10,6 +10,8 @@ contract Election {
 
     // Store accounts that have voted
     mapping(address => bool) public voters;
+    // mapping(address => uint) public voterAge;
+
     // Read/write candidates
     mapping(uint => Candidate) public candidates;
     // Store Candidates Count
@@ -29,6 +31,10 @@ contract Election {
         // require that they haven't voted before
         require(!voters[msg.sender]);
 
+        // voterAge[msg.sender] = 19;
+
+        // require(voterAge[msg.sender] >= 18);
+
         // require a valid candidate
         require(_candidateId > 0 && _candidateId <= candidatesCount);
 
@@ -38,4 +44,16 @@ contract Election {
         // update candidate vote Count
         candidates[_candidateId].voteCount ++;
     }
+
+    
+    // function updateMyAge(uint newAge) public {
+
+    //     //uint presentAge = voterAge[msg.sender];
+    //     // require(newAge > presentAge);
+
+    //     voterAge[msg.sender] = newAge;
+
+        
+    // }
+
 }

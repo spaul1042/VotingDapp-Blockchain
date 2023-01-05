@@ -34,12 +34,15 @@ App = {
   render: function() {
     var electionInstance;
     var loader = $("#loader");
+    // var loader = document.getElementById('#loader');
+    // var content = document.getElementById('#content');
     var content = $("#content");
   
     loader.show();
     content.hide();
+    // content.show();
   
-    // Load account data
+    // Load account data, inserted extra then here debug if any error pops out
     web3.eth.getCoinbase(function(err, account) {
       if (err === null) {
         App.account = account;
@@ -85,6 +88,7 @@ App = {
       console.warn(error);
     });
   },
+
   castVote: function() {
     var candidateId = $('#candidatesSelect').val();
     App.contracts.Election.deployed().then(function(instance) {
@@ -97,6 +101,7 @@ App = {
       console.error(err);
     });
   }
+
 
 };
 
