@@ -80,7 +80,7 @@ App = {
     }).then(function(hasVoted) {
       // Do not allow a user to vote
       if(hasVoted) {
-        $('form').hide();
+        $('.voteForm').hide();
       }
       loader.hide();
       content.show();
@@ -95,13 +95,38 @@ App = {
       return instance.vote(candidateId, { from: App.account });
     }).then(function(result) {
       // Wait for votes to update
-      $("#content").hide();
-      $("#loader").show();
+      // $("#content").hide();
+      // $("#loader").show();
+    }).catch(function(err) {
+      console.error(err);
+    });
+  },
+
+  updateAge: function() {
+    var newAge = $('#newAge').val();
+    App.contracts.Election.deployed().then(function(instance) {
+      return instance.updateMyAge(newAge, { from: App.account });
+    }).then(function(result) {
+      // Wait for votes to update
+      // $("#content").hide();
+      // $("#loader").show();
+    }).catch(function(err) {
+      console.error(err);
+    });
+
+  },
+
+  retractVote: function() {
+    App.contracts.Election.deployed().then(function(instance) {
+      return instance.retractMyVote({ from: App.account });
+    }).then(function(result) {
+      // Wait for votes to update
+      // $("#content").hide();
+      // $("#loader").show();
     }).catch(function(err) {
       console.error(err);
     });
   }
-
 
 };
 

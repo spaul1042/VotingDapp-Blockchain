@@ -8,6 +8,7 @@
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/custom.css" rel = "stylesheet">
   </head>
   <body>
     <div class="container" style="width: 650px;">
@@ -32,7 +33,7 @@
               </tbody>
             </table>
             <hr/>
-            <div>
+            <div class ="voteForm">
               <form onSubmit= "App.castVote(); return false;">
                 <div class="form-group">
                   <label for="candidatesSelect">Select Candidate</label>
@@ -43,6 +44,23 @@
                 <hr />
               </form>
             </div>
+
+            <div class ="updateAgeForm">
+              <form onSubmit= "App.updateAge(); return false;">
+                Enter new Age : <input class="form-control" id="newAge">
+                <button type="submit" class="btn btn-primary">UpdateAge</button>
+                <hr />
+              </form>
+            </div>
+
+            <div class ="retractVoteForm">
+              <form onSubmit= "App.retractVote(); return false;">
+                <p class ="txt"> Are you sure, you wanna retract your vote?</p>
+                <button type="submit" class="btn btn-primary">Retract Vote</button>
+                <hr />
+              </form>
+            </div>
+
             <p id="accountAddress" class="text-center"></p>
             
           </div>

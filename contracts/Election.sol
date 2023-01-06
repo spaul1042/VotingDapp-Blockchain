@@ -10,7 +10,10 @@ contract Election {
 
     // Store accounts that have voted
     mapping(address => bool) public voters;
-    // mapping(address => uint) public voterAge;
+    mapping(address => uint) public voterAge;
+    mapping(address => uint) public voter_candidate;
+    // mapping(address => uint ) public num_votes;
+    // mapping(address => uint ) public  num_retracts;
 
     // Read/write candidates
     mapping(uint => Candidate) public candidates;
@@ -31,29 +34,43 @@ contract Election {
         // require that they haven't voted before
         require(!voters[msg.sender]);
 
-        // voterAge[msg.sender] = 19;
+        if(voterAge[msg.sender] == 0){
+              voterAge[msg.sender] = 19;
+        }
 
-        // require(voterAge[msg.sender] >= 18);
+        require(voterAge[msg.sender] >= 18);
 
         // require a valid candidate
         require(_candidateId > 0 && _candidateId <= candidatesCount);
 
         // record that voter has voted
         voters[msg.sender] = true;
+        // num_votes[msg.sender] += 1;
+
+        voter_candidate[msg.sender] = _candidateId;
 
         // update candidate vote Count
         candidates[_candidateId].voteCount ++;
     }
 
     
-    // function updateMyAge(uint newAge) public {
+    function updateMyAge(uint newAge) public {
+        // Usingg this function a voter can update his/her vote in the database
+        voterAge[msg.sender] = newAge;
 
-    //     //uint presentAge = voterAge[msg.sender];
-    //     // require(newAge > presentAge);
+    }
 
-    //     voterAge[msg.sender] = newAge;
+    function retractMyVote() public{
 
-        
-    // }
+        require(voters[msg.sender]);
+
+        voters[msg.sender] = false;
+        // num_retracts[msg.sender] += 1;
+
+        uint id = voter_candidate[msg.sender];
+
+        candidates[id].voteCount --;
+
+    }
 
 }
