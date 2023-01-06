@@ -6,12 +6,12 @@ truffle unbox not working, so will use truffle init to initialize project struct
 
  
 
-1) Install truffle using npm 
+#Install truffle using npm 
    Install Ganache for setting up a local blockchain Network (Provides free 10 accounts) 
     
    truffle unbox pet-shop box or git clone if unbox not working 
 
-2) To connect truffle backend project with Ganache network , change truffle-config.js file as for example:
+#To connect truffle backend project with Ganache network , change truffle-config.js file as for example:
 
   module.exports = {
   // See <http://truffleframework.com/docs/advanced/configuration>
