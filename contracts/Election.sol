@@ -20,6 +20,20 @@ contract Election {
     // Store Candidates Count
     uint public candidatesCount;
 
+    // voted event
+    event votedEvent (
+        uint indexed _candidateId
+    );
+
+    // ageUpdate event
+    event ageUpdateEvent (
+        uint indexed new_age
+    );
+    // retractEvent event
+    event retractEvent (
+        address indexed voterAdress
+    );
+
     constructor () public {
         addCandidate("Candidate 1");
         addCandidate("Candidate 2");
@@ -34,10 +48,6 @@ contract Election {
         // require that they haven't voted before
         require(!voters[msg.sender]);
 
-        if(voterAge[msg.sender] == 0){
-              voterAge[msg.sender] = 19;
-        }
-
         require(voterAge[msg.sender] >= 18);
 
         // require a valid candidate
@@ -51,12 +61,17 @@ contract Election {
 
         // update candidate vote Count
         candidates[_candidateId].voteCount ++;
+
+        // emitting voted event 
+        emit votedEvent(_candidateId);
     }
 
     
     function updateMyAge(uint newAge) public {
         // Usingg this function a voter can update his/her vote in the database
         voterAge[msg.sender] = newAge;
+
+        emit ageUpdateEvent(newAge);
 
     }
 
@@ -70,6 +85,8 @@ contract Election {
         uint id = voter_candidate[msg.sender];
 
         candidates[id].voteCount --;
+
+        emit retractEvent(msg.sender);
 
     }
 
